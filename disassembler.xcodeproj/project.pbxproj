@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B393D24827F7D38B009E45EF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B393D24727F7D38B009E45EF /* main.cpp */; };
+		B393D25027F7D40A009E45EF /* disassembler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B393D24E27F7D40A009E45EF /* disassembler.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,9 @@
 /* Begin PBXFileReference section */
 		B393D24427F7D38B009E45EF /* disassembler */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = disassembler; sourceTree = BUILT_PRODUCTS_DIR; };
 		B393D24727F7D38B009E45EF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		B393D24E27F7D40A009E45EF /* disassembler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = disassembler.cpp; sourceTree = "<group>"; };
+		B393D24F27F7D40A009E45EF /* disassembler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = disassembler.hpp; sourceTree = "<group>"; };
+		B393D25127F7D6F8009E45EF /* opcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = opcode.h; path = ../../opcode.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,9 @@
 		B393D24627F7D38B009E45EF /* disassembler */ = {
 			isa = PBXGroup;
 			children = (
+				B393D25127F7D6F8009E45EF /* opcode.h */,
+				B393D24E27F7D40A009E45EF /* disassembler.cpp */,
+				B393D24F27F7D40A009E45EF /* disassembler.hpp */,
 				B393D24727F7D38B009E45EF /* main.cpp */,
 			);
 			path = disassembler;
@@ -120,6 +127,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B393D24827F7D38B009E45EF /* main.cpp in Sources */,
+				B393D25027F7D40A009E45EF /* disassembler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
