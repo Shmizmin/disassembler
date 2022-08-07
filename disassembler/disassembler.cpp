@@ -38,7 +38,7 @@ std::string ti::disassembleChunk(const ti::chunk& chunk) noexcept
 {
     std::string out;
     
-    for (auto index = 0; index < chunk.size();)
+    for (auto index = 0x8000; index < chunk.size();)
     {
         const auto&&[insn, offset] = ti::disassembleInstruction(chunk, index);
         out += insn;

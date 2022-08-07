@@ -49,7 +49,7 @@ int main(int argc, const char** argv)
         
         else
         {
-            std::fprintf(stderr, "[Error] Unrecognized launch option %s\n", option.data());
+            std::fprintf(stderr, "[Error] Unrecognized launch option %s\nExiting...\n", option.data());
             return EXIT_FAILURE;
         }
     }
