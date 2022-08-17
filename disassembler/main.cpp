@@ -13,8 +13,7 @@ int main(int argc, const char** argv)
     }
     
     std::string filepath = argv[1];
-    
-    auto ending = filepath.substr(filepath.length() - 2, filepath.length());
+    const auto ending = filepath.substr(filepath.length() - 2, filepath.length());
     
     if (ending != ".o")
     {
@@ -22,8 +21,8 @@ int main(int argc, const char** argv)
         return EXIT_FAILURE;
     }
     
-    auto filename = filepath.substr(0, filepath.length() - 2);
-    auto size = std::filesystem::file_size(filepath);
+    const auto filename = filepath.substr(0, filepath.length() - 2);
+    const auto size = std::filesystem::file_size(filepath);
     auto handlein = std::ifstream(filepath, std::ios::in | std::ios::binary);
     
     if (!handlein.good())
@@ -32,10 +31,10 @@ int main(int argc, const char** argv)
         return EXIT_FAILURE;
     }
     
-    ti::chunk chunk(size, '\0');
-    handlein.read((char*)&chunk[0], size);
+    chunk chunk(size, '\0');
+    handlein.read(reinterpret_cast<char*>(&chunk[0]), size);
     
-    auto source = ti::disassembleChunk(chunk);
+    auto source = disassembleChunk(chunk);
     
     if (argc > 2)
     {

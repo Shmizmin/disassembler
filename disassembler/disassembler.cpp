@@ -4,7 +4,7 @@
 
 namespace
 {
-    std::uint8_t read8(const ti::chunk& chunk, int& offset)
+    std::uint8_t read8(const chunk& chunk, int& offset)
     {
         //optimize
         auto val = chunk[offset];
@@ -12,7 +12,7 @@ namespace
         return val;
     }
     
-    std::uint16_t read16(const ti::chunk& vec, int& offset)
+    std::uint16_t read16(const chunk& vec, int& offset)
     {
         auto val1 = read8(vec, offset);
         auto val2 = read8(vec, offset);
@@ -24,23 +24,23 @@ namespace
     std::string hx(I w, std::size_t hex_len = sizeof(I) << 1)
     {
         static const char* digits = "0123456789abcdef";
-        std::string rc(hex_len,'0');
+        std::string rc(hex_len, '0');
         
-        for (size_t i=0, j=(hex_len-1)*4 ; i<hex_len; ++i,j-=4)
-            rc[i] = digits[(w>>j) & 0x0f];
+        for (std::size_t i = 0, j = (hex_len - 1) * 4 ; i < hex_len; ++i, j -= 4)
+            rc[i] = digits[(w >> j) & 0x0f];
         
         return rc;
     }
 } //anonymous namespace
 
 
-std::string ti::disassembleChunk(const ti::chunk& chunk) noexcept
+std::string disassembleChunk(const chunk& chunk) noexcept
 {
     std::string out;
     
     for (auto index = 0x8000; index < chunk.size();)
     {
-        const auto&&[insn, offset] = ti::disassembleInstruction(chunk, index);
+        const auto&&[insn, offset] = disassembleInstruction(chunk, index);
         out += insn;
         out += "\n";
     }
@@ -48,7 +48,7 @@ std::string ti::disassembleChunk(const ti::chunk& chunk) noexcept
     return out;
 }
 
-ti::insn ti::disassembleInstruction(const ti::chunk& chunk, int& offset) noexcept
+insn disassembleInstruction(const chunk& chunk, int& offset) noexcept
 {
 #define STRINTERN(x) #x
 #define STR(x) std::string(STRINTERN(x))
